@@ -20,9 +20,6 @@ class Posts extends Component {
     componentWillReceiveProps(nextProps) {
         console.log("componentWillReceiveProps");
         console.log(nextProps);
-        console.log(nextProps.post);
-        console.log("this.props.posts");
-        console.log(this.props.posts);
     }
    
     
@@ -55,13 +52,11 @@ class Posts extends Component {
 Posts.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
     removePost: PropTypes.func.isRequired,
-    posts: PropTypes.array.isRequired,
-    post: PropTypes.object
+    posts: PropTypes.array.isRequired
 }
 
 const mapStateToProps = state => ({
-    posts: state.posts.items,
-    post: state.posts.item
+    posts: state.posts.items
 })
 
 export default connect(mapStateToProps, { fetchPosts, removePost })(Posts);

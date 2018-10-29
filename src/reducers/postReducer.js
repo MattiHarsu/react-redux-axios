@@ -17,26 +17,22 @@ export default function(state=initialState, action){
         case FETCH_POSTS:
             console.log("Reducer, FETCH_POSTS");
             return {
-                ...state,
                 items: action.payload
             };
         case NEW_POST:
             console.log("Reducer, NEW_POST");
             console.log(action.payload);
-            state.items.push(action.payload);
             return {
-                ...state,
-                item: action.payload
+                items: state.items.concat(action.payload)
             };
           
         case DELETE_POST:
             console.log("Reducer, DELETE_POST");
             var array = [...state.items];
             var index = array.indexOf(action.payload);
-            state.items.splice(index,1);
+            array.splice(index,1);
             return {
-                ...state,
-                item: action.payload
+                items: array
             };
         default:
             return state;
